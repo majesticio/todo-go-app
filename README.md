@@ -11,7 +11,6 @@
 ## gcp crap 👍🏼
 > project: todo-app  
 > project id: todo-app-go-htmx-id  
-> Service URL: https://service-name-rdve5qkcjq-uw.a.run.app
 
 `gcloud auth login`
 
