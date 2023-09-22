@@ -1,0 +1,26 @@
+# Todo App in one Go binary
+## Go + HTMX
+*Binary works solo, but I will make a docker image for hosting*
+
+`docker build -t go-todo-app .`
+
+### run locally to test  
+
+`docker run --rm -p 8000:8000 go-todo-app`  
+
+### login to ecr  
+
+`$(aws ecr get-login --region region-name --no-include-email)`  
+
+### create ecr repo  
+
+`aws ecr create-repository --repository-name go-todo-app`  
+
+### tag image
+>Replace account-id with your AWS account id and region-name with your AWS region (like us-west-1).  
+
+`docker tag my-todo-app:latest account-id.dkr.ecr.region-name.amazonaws.com/go-todo-app:latest`  
+
+### push image  
+
+`docker push account-id.dkr.ecr.region-name.amazonaws.com/go-todo-app:latest`
