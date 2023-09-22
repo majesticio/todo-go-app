@@ -8,6 +8,30 @@
 
 `docker run --rm -p 8000:8000 go-todo-app`  
 
+## gcp crap 👍🏼
+> project: todo-app  
+> project id: todo-app-go-htmx-id  
+> Service URL: https://service-name-rdve5qkcjq-uw.a.run.app
+
+`gcloud auth login`
+
+`gcloud projects create todo-app-go-htmx-id --name="todo-app"` 
+
+`gcloud config set project todo-app-go-htmx-id`
+
+`gcloud services enable containerregistry.googleapis.com`
+
+`docker tag todo-app gcr.io/todo-app-go-htmx-id/todo-app`
+
+`docker push gcr.io/todo-app-go-htmx-id/todo-app`
+
+## the juice
+
+`gcloud run deploy service-name --image gcr.io/todo-app-go-htmx-id/todo-app --platform managed --port=8000` <-- default port is 8080  Consider updating app to use `8080`  
+*takes a while*
+
+https://console.cloud.google.com/run/domains *manage custom domains*
+## aws crap 👎🏼
 ### login to ecr  
 
 `$(aws ecr get-login --region region-name --no-include-email)`  
